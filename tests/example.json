@@ -1,0 +1,12 @@
+{
+	"a": "b",
+	"b": 1,
+	"c": true,
+	"d": ["list", "of", "things"],
+	"section": {
+		"a": "b",
+		"b": 1,
+		"c": true,
+		"d": ["list", "of", "things"]
+	}
+}
