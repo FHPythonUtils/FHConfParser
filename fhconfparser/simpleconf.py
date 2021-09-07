@@ -100,7 +100,7 @@ class SimpleConf:
 	section: str
 	args: dict[str, Any]
 
-	def get(self, option: str, fallback: Any | None) -> Any:
+	def get(self, option: str, fallback: Any | None = None) -> Any:
 		"""Get an option from the commandline/ the config.
 
 		Args:

@@ -109,7 +109,7 @@ sc.get("zero", False) # Provide the actual default here (used if not provided
 [[find in source code]](../../fhconfparser/simpleconf.py#L103)
 
 ```python
-def get(option: str, fallback: Any | None) -> Any:
+def get(option: str, fallback: Any | None = None) -> Any:
 ```
 
 Get an option from the commandline/ the config.
