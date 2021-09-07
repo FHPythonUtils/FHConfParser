@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fhconfparser"
-version = "2021"
+version = "2021.1"
 description = "Provides a config language independent way to read a config file."
 authors = ["FredHappyface"]
 classifiers = [
