@@ -5,6 +5,7 @@
 Provides a config language independent way to read a config file.
 
 - [Fhconfparser](../README.md#fhconfparser-index) / [Modules](../README.md#fhconfparser-modules) / [fhconfparser](index.md#fhconfparser) / fhconfparser
+    - [Currently supports](#currently-supports)
     - [FHConfParser](#fhconfparser)
         - [FHConfParser().defaults](#fhconfparserdefaults)
         - [FHConfParser().get](#fhconfparserget)
@@ -21,19 +22,20 @@ Provides a config language independent way to read a config file.
         - [FHConfParser().parseToml](#fhconfparserparsetoml)
         - [FHConfParser().sections](#fhconfparsersections)
 
-## Rationale
+## Rationale for project
 For instance toml and ini syntax is very similar but not identical. Currently, tools such as
 pylint must implement custom ways to deal with this. Hopefully this code
 streamlines that a bit.
 
 ## Currently supports
+
 - Ini
 - Toml
 - Json
 
 ## FHConfParser
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L27)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L29)
 
 ```python
 attr.s(auto_attribs=True)
@@ -252,7 +254,7 @@ Return a list of options available in the specified section.
 
 ### FHConfParser().parseConfigList
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L38)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L40)
 
 ```python
 def parseConfigList(
@@ -289,7 +291,7 @@ and format. e.g. [("pyproject.toml", "toml"), (".config.ini", "ini")]
 
 ### FHConfParser().parseIni
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L80)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L82)
 
 ```python
 def parseIni(file: str, throws: bool = False, **kwargs) -> list[str]:
@@ -314,7 +316,7 @@ Defaults to False.
 
 ### FHConfParser().parseJson
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L158)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L159)
 
 ```python
 def parseJson(
@@ -345,7 +347,7 @@ Defaults to False.
 
 ### FHConfParser().parseToml
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L128)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L130)
 
 ```python
 def parseToml(

@@ -1,11 +1,12 @@
 """Provides a config language independent way to read a config file.
 
-## Rationale
+## Rationale for project
 For instance toml and ini syntax is very similar but not identical. Currently, tools such as
 pylint must implement custom ways to deal with this. Hopefully this code
 streamlines that a bit.
 
 ## Currently supports
+
 - Ini
 - Toml
 - Json
@@ -16,6 +17,7 @@ import configparser
 import json
 import json.decoder
 import os.path
+from pathlib import Path
 from typing import Any, Callable
 
 import attr
@@ -144,15 +146,14 @@ class FHConfParser:
 			list[str]: list of successfully parsed files
 		"""
 		del kwargs
-		with open(file) as tomlFile:
-			try:
-				doc = tomlkit.loads(tomlFile.read())
-			except tomlkit.exceptions.ParseError as error:
-				if throws:
-					raise error
-				return []
-			# **new, **original to prevent overwriting existing values
-			self.data = {**_resolveNamespace(doc, tomlNamespace), **self.data}
+		try:
+			doc = tomlkit.loads(Path(file).read_text(encoding="utf-8"))
+		except tomlkit.exceptions.ParseError as error:
+			if throws:
+				raise error
+			return []
+		# **new, **original to prevent overwriting existing values
+		self.data = {**_resolveNamespace(doc, tomlNamespace), **self.data}
 		return [file]
 
 	def parseJson(
@@ -174,15 +175,14 @@ class FHConfParser:
 			list[str]: list of successfully parsed files
 		"""
 		del kwargs
-		with open(file) as jsonFile:
-			try:
-				doc = json.loads(jsonFile.read())
-			except json.decoder.JSONDecodeError as error:
-				if throws:
-					raise error
-				return []
-			# **new, **original to prevent overwriting existing values
-			self.data = {**_resolveNamespace(doc, jsonNamespace), **self.data}
+		try:
+			doc = json.loads(Path(file).read_text(encoding="utf-8"))
+		except json.decoder.JSONDecodeError as error:
+			if throws:
+				raise error
+			return []
+		# **new, **original to prevent overwriting existing values
+		self.data = {**_resolveNamespace(doc, jsonNamespace), **self.data}
 		return [file]
 
 	def hasSection(self, section: str | None) -> bool:
