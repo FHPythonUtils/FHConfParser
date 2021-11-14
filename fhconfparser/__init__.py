@@ -12,5 +12,7 @@ streamlines that a bit.
 - Json
 """
 
+from __future__ import annotations
+
 from .fhconfparser import FHConfParser
 from .simpleconf import SimpleConf

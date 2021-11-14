@@ -1,9 +1,10 @@
+from __future__ import annotations
+
 import argparse
 import sys
 from pathlib import Path
 
 THISDIR = str(Path(__file__).resolve().parent)
-
 sys.path.insert(0, str(Path(THISDIR).parent))
 
 from fhconfparser import FHConfParser, SimpleConf
