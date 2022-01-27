@@ -21,8 +21,7 @@ from pathlib import Path
 from typing import Any, Callable
 
 import attr
-import tomlkit
-import tomlkit.exceptions
+import tomli
 
 
 @attr.s(auto_attribs=True)
@@ -105,25 +104,24 @@ class FHConfParser:
 
 		# Populate the data
 		for section in ini.sections():
-			if section not in self.data:
-				options = {}
-				for option in ini.options(section):
-					# Get raw
-					data = ini.get(section, option)
-					# Cast to bool
+			options = self.data.get(section, {})
+			for option in ini.options(section):
+				# Get raw
+				data = ini.get(section, option)
+				# Cast to bool
+				try:
+					data = ini.getboolean(section, option)
+				except ValueError:
+					# Cast to float
 					try:
-						data = ini.getboolean(section, option)
+						data = float(data)  # pylint:disable=redefined-variable-type
 					except ValueError:
-						# Cast to float
-						try:
-							data = float(data)  # pylint:disable=redefined-variable-type
-						except ValueError:
-							# Cast to list (untyped)
-							dataList = data.split(",")
-							if len(dataList) > 1:
-								data = [x.strip() for x in dataList]
-					options[option] = data
-				self.data[section] = options
+						# Cast to list (untyped)
+						dataList = data.split(",")
+						if len(dataList) > 1:
+							data = [x.strip() for x in dataList]
+				options[option] = data
+			self.data[section] = options
 
 		return [file]
 
@@ -147,8 +145,8 @@ class FHConfParser:
 		"""
 		del kwargs
 		try:
-			doc = tomlkit.loads(Path(file).read_text(encoding="utf-8"))
-		except tomlkit.exceptions.ParseError as error:
+			doc = tomli.loads(Path(file).read_text(encoding="utf-8"))
+		except tomli.TOMLDecodeError as error:
 			if throws:
 				raise error
 			return []

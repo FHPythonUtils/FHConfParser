@@ -3,6 +3,13 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2022 - 2022/01/27
+
+- Update deps
+- Add formal tests
+- Use tomli in place of tomlkit (for parse speed improvements)
+- Bugfixes
+
 ## 2021.1.2 - 2021/10/14
 
 - Use pre-commit to enforce reasonable standards + consistency

@@ -35,7 +35,7 @@ streamlines that a bit.
 
 ## FHConfParser
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L29)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L28)
 
 ```python
 attr.s(auto_attribs=True)
@@ -52,7 +52,7 @@ FHConfParser.
 
 ### FHConfParser().defaults
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L211)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L209)
 
 ```python
 def defaults() -> dict[(str, Any)]:
@@ -66,7 +66,7 @@ Return a dictionary containing the defaults.
 
 ### FHConfParser().get
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L238)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L236)
 
 ```python
 def get(section: str | None, option: str, fallback: Any = None) -> Any:
@@ -87,7 +87,7 @@ Defaults to None.
 
 ### FHConfParser().getbool
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L292)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L290)
 
 ```python
 def getbool(
@@ -115,7 +115,7 @@ the value uncasted. Defaults to True
 
 ### FHConfParser().getfloat
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L274)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L272)
 
 ```python
 def getfloat(
@@ -143,7 +143,7 @@ the value uncasted. Defaults to True
 
 ### FHConfParser().getint
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L256)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L254)
 
 ```python
 def getint(
@@ -171,7 +171,7 @@ the value uncasted. Defaults to True
 
 ### FHConfParser().getstr
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L310)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L308)
 
 ```python
 def getstr(
@@ -199,7 +199,7 @@ the value uncasted. Defaults to True
 
 ### FHConfParser().hasOption
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L199)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L197)
 
 ```python
 def hasOption(section: str | None, option: str) -> bool:
@@ -218,7 +218,7 @@ Return True if the option present in the data rep (under a given section.
 
 ### FHConfParser().hasSection
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L188)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L186)
 
 ```python
 def hasSection(section: str | None) -> bool:
@@ -236,7 +236,7 @@ Return True if the section present in the data rep.
 
 ### FHConfParser().options
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L227)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L225)
 
 ```python
 def options(section: str | None) -> list[str]:
@@ -254,7 +254,7 @@ Return a list of options available in the specified section.
 
 ### FHConfParser().parseConfigList
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L40)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L39)
 
 ```python
 def parseConfigList(
@@ -291,7 +291,7 @@ and format. e.g. [("pyproject.toml", "toml"), (".config.ini", "ini")]
 
 ### FHConfParser().parseIni
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L82)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L81)
 
 ```python
 def parseIni(file: str, throws: bool = False, **kwargs) -> list[str]:
@@ -316,7 +316,7 @@ Defaults to False.
 
 ### FHConfParser().parseJson
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L159)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L157)
 
 ```python
 def parseJson(
@@ -347,7 +347,7 @@ Defaults to False.
 
 ### FHConfParser().parseToml
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L130)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L128)
 
 ```python
 def parseToml(
@@ -378,7 +378,7 @@ Defaults to False.
 
 ### FHConfParser().sections
 
-[[find in source code]](../../fhconfparser/fhconfparser.py#L219)
+[[find in source code]](../../fhconfparser/fhconfparser.py#L217)
 
 ```python
 def sections() -> list[str]:

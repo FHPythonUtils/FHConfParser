@@ -8,30 +8,44 @@ sys.path.insert(0, str(Path(THISDIR).parent))
 
 import fhconfparser
 
-print("INI")
-ini = fhconfparser.FHConfParser()
-ini.parseConfigList([(f"{THISDIR}/example.ini", "ini")])
-print(ini.data)
-print(ini.defaults())
-print(ini.sections())
-print(ini.options("section"))
-print(ini.get("section", "a"))
+
+def test_ini():
+	ini = fhconfparser.FHConfParser()
+	ini.parseConfigList([(f"{THISDIR}/data/example.ini", "ini")])
+	assert ini.data == {"section": {"a": "b", "b": True, "c": True, "d": ["list", "of", "things"]}}
+	assert ini.defaults() == {}
+	assert ini.sections() == ["section"]
+	assert ini.options("section") == ["a", "b", "c", "d"]
+	assert ini.get("section", "a") == "b"
 
 
-print("JSON")
-json = fhconfparser.FHConfParser()
-json.parseConfigList([(f"{THISDIR}/example.json", "json")])
-print(json.data)
-print(json.defaults())
-print(json.sections())
-print(json.options("section"))
-print(json.get("section", "a"))
+def test_json():
+	json = fhconfparser.FHConfParser()
+	json.parseConfigList([(f"{THISDIR}/data/example.json", "json")])
+	assert json.data == {
+		"a": "b",
+		"b": 1,
+		"c": True,
+		"d": ["list", "of", "things"],
+		"section": {"a": "b", "b": 1, "c": True, "d": ["list", "of", "things"]},
+	}
+	assert json.defaults() == {"a": "b", "b": 1, "c": True, "d": ["list", "of", "things"]}
+	assert json.sections() == ["section"]
+	assert json.options("section") == ["a", "b", "c", "d"]
+	assert json.get("section", "a") == "b"
 
-print("TOML")
-toml = fhconfparser.FHConfParser()
-toml.parseConfigList([(f"{THISDIR}/example.toml", "toml")])
-print(toml.data)
-print(toml.defaults())
-print(toml.sections())
-print(toml.options("section"))
-print(toml.get("section", "a"))
+
+def test_toml():
+	toml = fhconfparser.FHConfParser()
+	toml.parseConfigList([(f"{THISDIR}/data/example.toml", "toml")])
+	assert toml.data == {
+		"a": "b",
+		"b": 1,
+		"c": True,
+		"d": ["list", "of", "things"],
+		"section": {"a": "b", "b": 1, "c": True, "d": ["list", "of", "things"]},
+	}
+	assert toml.defaults() == {"a": "b", "b": 1, "c": True, "d": ["list", "of", "things"]}
+	assert toml.sections() == ["section"]
+	assert toml.options("section") == ["a", "b", "c", "d"]
+	assert toml.get("section", "a") == "b"
