@@ -1,10 +1,10 @@
-# simpleconf
+# SimpleConf
 
-> Auto-generated documentation for [fhconfparser.simpleconf](../../fhconfparser/simpleconf.py) module.
+> Auto-generated documentation for [fhconfparser.simpleconf](../../../fhconfparser/simpleconf.py) module.
 
 SimpleConf works to combine some dictionary of options (likely from argparse)...
 
-- [Fhconfparser](../README.md#fhconfparser-index) / [Modules](../README.md#fhconfparser-modules) / [fhconfparser](index.md#fhconfparser) / simpleconf
+- [Fhconfparser](../README.md#fhconfparser-index) / [Modules](../MODULES.md#fhconfparser-modules) / [Fhconfparser](index.md#fhconfparser) / SimpleConf
     - [SimpleConf](#simpleconf)
         - [SimpleConf().get](#simpleconfget)
 
@@ -20,36 +20,36 @@ from fhconfparser import FHConfParser, SimpleConf
 
 parser = argparse.ArgumentParser(argument_default=argparse.SUPPRESS)
 parser.add_argument(
- "--file",
- "-o",
- help="Filename to write to (omit for stdout)",
+    "--file",
+    "-o",
+    help="Filename to write to (omit for stdout)",
 )
 ...
 parser.add_argument(
- "--zero",
- "-0",
- help="Return non zero exit code if an incompatible license is found",
- action="store_true",
+    "--zero",
+    "-0",
+    help="Return non zero exit code if an incompatible license is found",
+    action="store_true",
 )
 args = vars(parser.parse_args())
 
 # ConfigParser (Parses in the following order: `pyproject.toml`, `setup.cfg`
 configparser = FHConfParser()
 configparser.parseConfigList(
- [("pyproject.toml", "toml"), ("setup.cfg", "ini")],
- ["tool"],
- ["tool"],
+    [("pyproject.toml", "toml"), ("setup.cfg", "ini")],
+    ["tool"],
+    ["tool"],
 )
 
 sc = SimpleConf(configparser, "licensecheck", args)
 
 sc.get("zero", False) # Provide the actual default here (used if not provided
-       # from the command line or through a config file)
+                      # from the command line or through a config file)
 ```
 
 ## SimpleConf
 
-[[find in source code]](../../fhconfparser/simpleconf.py#L51)
+[[find in source code]](../../../fhconfparser/simpleconf.py#L51)
 
 ```python
 attr.s(auto_attribs=True)
@@ -77,36 +77,36 @@ from fhconfparser import FHConfParser, SimpleConf
 
 parser = argparse.ArgumentParser(argument_default=argparse.SUPPRESS)
 parser.add_argument(
- "--file",
- "-o",
- help="Filename to write to (omit for stdout)",
+    "--file",
+    "-o",
+    help="Filename to write to (omit for stdout)",
 )
 ...
 parser.add_argument(
- "--zero",
- "-0",
- help="Return non zero exit code if an incompatible license is found",
- action="store_true",
+    "--zero",
+    "-0",
+    help="Return non zero exit code if an incompatible license is found",
+    action="store_true",
 )
 args = vars(parser.parse_args())
 
 # ConfigParser (Parses in the following order: `pyproject.toml`, `setup.cfg`
 configparser = FHConfParser()
 configparser.parseConfigList(
- [("pyproject.toml", "toml"), ("setup.cfg", "ini")],
- ["tool"],
- ["tool"],
+    [("pyproject.toml", "toml"), ("setup.cfg", "ini")],
+    ["tool"],
+    ["tool"],
 )
 
 sc = SimpleConf(configparser, "licensecheck", args)
 
 sc.get("zero", False) # Provide the actual default here (used if not provided
-       # from the command line or through a config file)
+                      # from the command line or through a config file)
 ```
 
 ### SimpleConf().get
 
-[[find in source code]](../../fhconfparser/simpleconf.py#L103)
+[[find in source code]](../../../fhconfparser/simpleconf.py#L103)
 
 ```python
 def get(option: str, fallback: Any | None = None) -> Any:
