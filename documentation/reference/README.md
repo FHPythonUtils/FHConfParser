@@ -1,10 +1,9 @@
-# Fhconfparser Modules
+# Fhconfparser Index
 
-> Auto-generated documentation modules index.
+> Auto-generated documentation index.
 
-Full list of [Fhconfparser](README.md#fhconfparser-index) project modules.
+A full list of `Fhconfparser` project modules.
 
-- [Fhconfparser Index](README.md#fhconfparser-index)
 - [Fhconfparser](fhconfparser/index.md#fhconfparser)
     - [FHConfParser](fhconfparser/fhconfparser.md#fhconfparser)
     - [SimpleConf](fhconfparser/simpleconf.md#simpleconf)

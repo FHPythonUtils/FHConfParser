@@ -1,62 +1,50 @@
 # FHConfParser
 
+[Fhconfparser Index](../README.md#fhconfparser-index) /
+[Fhconfparser](./index.md#fhconfparser) /
+FHConfParser
+
 > Auto-generated documentation for [fhconfparser.fhconfparser](../../../fhconfparser/fhconfparser.py) module.
 
-Provides a config language independent way to read a config file.
-
-- [Fhconfparser](../README.md#fhconfparser-index) / [Modules](../MODULES.md#fhconfparser-modules) / [Fhconfparser](index.md#fhconfparser) / FHConfParser
-    - [Currently supports](#currently-supports)
-    - [FHConfParser](#fhconfparser)
-        - [FHConfParser().defaults](#fhconfparserdefaults)
-        - [FHConfParser().get](#fhconfparserget)
-        - [FHConfParser().getbool](#fhconfparsergetbool)
-        - [FHConfParser().getfloat](#fhconfparsergetfloat)
-        - [FHConfParser().getint](#fhconfparsergetint)
-        - [FHConfParser().getstr](#fhconfparsergetstr)
-        - [FHConfParser().hasOption](#fhconfparserhasoption)
-        - [FHConfParser().hasSection](#fhconfparserhassection)
-        - [FHConfParser().options](#fhconfparseroptions)
-        - [FHConfParser().parseConfigList](#fhconfparserparseconfiglist)
-        - [FHConfParser().parseIni](#fhconfparserparseini)
-        - [FHConfParser().parseJson](#fhconfparserparsejson)
-        - [FHConfParser().parseToml](#fhconfparserparsetoml)
-        - [FHConfParser().sections](#fhconfparsersections)
-
-## Rationale for project
-For instance toml and ini syntax is very similar but not identical. Currently, tools such as
-pylint must implement custom ways to deal with this. Hopefully this code
-streamlines that a bit.
-
-## Currently supports
-
-- Ini
-- Toml
-- Json
+- [FHConfParser](#fhconfparser)
+  - [FHConfParser](#fhconfparser-1)
+    - [FHConfParser().defaults](#fhconfparser()defaults)
+    - [FHConfParser().get](#fhconfparser()get)
+    - [FHConfParser().getbool](#fhconfparser()getbool)
+    - [FHConfParser().getfloat](#fhconfparser()getfloat)
+    - [FHConfParser().getint](#fhconfparser()getint)
+    - [FHConfParser().getstr](#fhconfparser()getstr)
+    - [FHConfParser().hasOption](#fhconfparser()hasoption)
+    - [FHConfParser().hasSection](#fhconfparser()hassection)
+    - [FHConfParser().options](#fhconfparser()options)
+    - [FHConfParser().parseConfigList](#fhconfparser()parseconfiglist)
+    - [FHConfParser().parseIni](#fhconfparser()parseini)
+    - [FHConfParser().parseJson](#fhconfparser()parsejson)
+    - [FHConfParser().parseToml](#fhconfparser()parsetoml)
+    - [FHConfParser().sections](#fhconfparser()sections)
 
 ## FHConfParser
 
-[[find in source code]](../../../fhconfparser/fhconfparser.py#L28)
-
-```python
-attr.s(auto_attribs=True)
-class FHConfParser():
-```
+[Show source in fhconfparser.py:28](../../../fhconfparser/fhconfparser.py#L28)
 
 FHConfParser.
 
 #### Returns
 
-- `FHConfParser` - parser object.
+- [FHConfParser](#fhconfparser) - parser object.
 - Call `parseConfigList` to parse files
 - Call `data` to access the internal rep
 
-### FHConfParser().defaults
-
-[[find in source code]](../../../fhconfparser/fhconfparser.py#L209)
+#### Signature
 
 ```python
-def defaults() -> dict[str, Any]:
+class FHConfParser:
+    ...
 ```
+
+### FHConfParser().defaults
+
+[Show source in fhconfparser.py:209](../../../fhconfparser/fhconfparser.py#L209)
 
 Return a dictionary containing the defaults.
 
@@ -64,13 +52,16 @@ Return a dictionary containing the defaults.
 
 - `list[str]` - A dictionary containing the defaults
 
-### FHConfParser().get
-
-[[find in source code]](../../../fhconfparser/fhconfparser.py#L236)
+#### Signature
 
 ```python
-def get(section: str | None, option: str, fallback: Any = None) -> Any:
+def defaults(self) -> dict[str, Any]:
+    ...
 ```
+
+### FHConfParser().get
+
+[Show source in fhconfparser.py:236](../../../fhconfparser/fhconfparser.py#L236)
 
 Get a value from section.option with some fallback for if it doesn't exist.
 
@@ -85,18 +76,16 @@ Defaults to None.
 
 - `Any` - the value at section.option or fallback
 
-### FHConfParser().getbool
-
-[[find in source code]](../../../fhconfparser/fhconfparser.py#L290)
+#### Signature
 
 ```python
-def getbool(
-    section: str | None,
-    option: str,
-    fallback: Any = None,
-    strict: bool = True,
-) -> bool:
+def get(self, section: str | None, option: str, fallback: Any = None) -> Any:
+    ...
 ```
+
+### FHConfParser().getbool
+
+[Show source in fhconfparser.py:290](../../../fhconfparser/fhconfparser.py#L290)
 
 Get a value from section.option with some fallback for if it doesn't exist as an bool.
 
@@ -113,18 +102,18 @@ the value uncasted. Defaults to True
 
 - `bool` - the value at section.option or fallback (Any if strict=False)
 
-### FHConfParser().getfloat
-
-[[find in source code]](../../../fhconfparser/fhconfparser.py#L272)
+#### Signature
 
 ```python
-def getfloat(
-    section: str | None,
-    option: str,
-    fallback: Any = None,
-    strict: bool = True,
-) -> float:
+def getbool(
+    self, section: str | None, option: str, fallback: Any = None, strict: bool = True
+) -> bool:
+    ...
 ```
+
+### FHConfParser().getfloat
+
+[Show source in fhconfparser.py:272](../../../fhconfparser/fhconfparser.py#L272)
 
 Get a value from section.option with some fallback for if it doesn't exist as an float.
 
@@ -141,18 +130,18 @@ the value uncasted. Defaults to True
 
 - `float` - the value at section.option or fallback (Any if strict=False)
 
-### FHConfParser().getint
-
-[[find in source code]](../../../fhconfparser/fhconfparser.py#L254)
+#### Signature
 
 ```python
-def getint(
-    section: str | None,
-    option: str,
-    fallback: Any = None,
-    strict: bool = True,
-) -> int:
+def getfloat(
+    self, section: str | None, option: str, fallback: Any = None, strict: bool = True
+) -> float:
+    ...
 ```
+
+### FHConfParser().getint
+
+[Show source in fhconfparser.py:254](../../../fhconfparser/fhconfparser.py#L254)
 
 Get a value from section.option with some fallback for if it doesn't exist as an int.
 
@@ -169,18 +158,18 @@ the value uncasted. Defaults to True
 
 - `int` - the value at section.option or fallback (Any if strict=False)
 
-### FHConfParser().getstr
-
-[[find in source code]](../../../fhconfparser/fhconfparser.py#L308)
+#### Signature
 
 ```python
-def getstr(
-    section: str | None,
-    option: str,
-    fallback: Any = None,
-    strict: bool = True,
-) -> str:
+def getint(
+    self, section: str | None, option: str, fallback: Any = None, strict: bool = True
+) -> int:
+    ...
 ```
+
+### FHConfParser().getstr
+
+[Show source in fhconfparser.py:308](../../../fhconfparser/fhconfparser.py#L308)
 
 Get a value from section.option with some fallback for if it doesn't exist as an str.
 
@@ -197,13 +186,18 @@ the value uncasted. Defaults to True
 
 - `str` - the value at section.option or fallback (Any if strict=False)
 
-### FHConfParser().hasOption
-
-[[find in source code]](../../../fhconfparser/fhconfparser.py#L197)
+#### Signature
 
 ```python
-def hasOption(section: str | None, option: str) -> bool:
+def getstr(
+    self, section: str | None, option: str, fallback: Any = None, strict: bool = True
+) -> str:
+    ...
 ```
+
+### FHConfParser().hasOption
+
+[Show source in fhconfparser.py:197](../../../fhconfparser/fhconfparser.py#L197)
 
 Return True if the option present in the data rep (under a given section.
 
@@ -216,13 +210,16 @@ Return True if the option present in the data rep (under a given section.
 
 - `bool` - Return True if the option present in the data rep (under a given section
 
-### FHConfParser().hasSection
-
-[[find in source code]](../../../fhconfparser/fhconfparser.py#L186)
+#### Signature
 
 ```python
-def hasSection(section: str | None) -> bool:
+def hasOption(self, section: str | None, option: str) -> bool:
+    ...
 ```
+
+### FHConfParser().hasSection
+
+[Show source in fhconfparser.py:186](../../../fhconfparser/fhconfparser.py#L186)
 
 Return True if the section present in the data rep.
 
@@ -234,13 +231,16 @@ Return True if the section present in the data rep.
 
 - `bool` - Return True if the section present in the data rep.
 
-### FHConfParser().options
-
-[[find in source code]](../../../fhconfparser/fhconfparser.py#L225)
+#### Signature
 
 ```python
-def options(section: str | None) -> list[str]:
+def hasSection(self, section: str | None) -> bool:
+    ...
 ```
+
+### FHConfParser().options
+
+[Show source in fhconfparser.py:225](../../../fhconfparser/fhconfparser.py#L225)
 
 Return a list of options available in the specified section.
 
@@ -252,17 +252,16 @@ Return a list of options available in the specified section.
 
 - `list[str]` - list of options
 
-### FHConfParser().parseConfigList
-
-[[find in source code]](../../../fhconfparser/fhconfparser.py#L39)
+#### Signature
 
 ```python
-def parseConfigList(
-    confList: list[tuple[str, str]],
-    tomlNamespace: list[str] | None = None,
-    jsonNamespace: list[str] | None = None,
-) -> list[str]:
+def options(self, section: str | None) -> list[str]:
+    ...
 ```
+
+### FHConfParser().parseConfigList
+
+[Show source in fhconfparser.py:39](../../../fhconfparser/fhconfparser.py#L39)
 
 Parse a list of tuples containing paths to config files and the format.
 
@@ -289,13 +288,21 @@ and format. e.g. [("pyproject.toml", "toml"), (".config.ini", "ini")]
 
 - `list[str]` - list of successfully parsed files
 
-### FHConfParser().parseIni
-
-[[find in source code]](../../../fhconfparser/fhconfparser.py#L81)
+#### Signature
 
 ```python
-def parseIni(file: str, throws: bool = False, **kwargs) -> list[str]:
+def parseConfigList(
+    self,
+    confList: list[tuple[str, str]],
+    tomlNamespace: list[str] | None = None,
+    jsonNamespace: list[str] | None = None,
+) -> list[str]:
+    ...
 ```
+
+### FHConfParser().parseIni
+
+[Show source in fhconfparser.py:81](../../../fhconfparser/fhconfparser.py#L81)
 
 Parse a single ini file and update the internal rep with the new data.
 
@@ -314,18 +321,16 @@ Defaults to False.
 
 - `list[str]` - list of successfully parsed files
 
-### FHConfParser().parseJson
-
-[[find in source code]](../../../fhconfparser/fhconfparser.py#L157)
+#### Signature
 
 ```python
-def parseJson(
-    file: str,
-    jsonNamespace: list[str] | None = None,
-    throws: bool = False,
-    **kwargs,
-) -> list[str]:
+def parseIni(self, file: str, throws: bool = False, **kwargs) -> list[str]:
+    ...
 ```
+
+### FHConfParser().parseJson
+
+[Show source in fhconfparser.py:157](../../../fhconfparser/fhconfparser.py#L157)
 
 Parse a single json file and update the internal rep with the new data.
 
@@ -345,18 +350,22 @@ Defaults to False.
 
 - `list[str]` - list of successfully parsed files
 
-### FHConfParser().parseToml
-
-[[find in source code]](../../../fhconfparser/fhconfparser.py#L128)
+#### Signature
 
 ```python
-def parseToml(
+def parseJson(
+    self,
     file: str,
-    tomlNamespace: list[str] | None = None,
+    jsonNamespace: list[str] | None = None,
     throws: bool = False,
-    **kwargs,
+    **kwargs
 ) -> list[str]:
+    ...
 ```
+
+### FHConfParser().parseToml
+
+[Show source in fhconfparser.py:128](../../../fhconfparser/fhconfparser.py#L128)
 
 Parse a single toml file and update the internal rep with the new data.
 
@@ -376,16 +385,34 @@ Defaults to False.
 
 - `list[str]` - list of successfully parsed files
 
-### FHConfParser().sections
-
-[[find in source code]](../../../fhconfparser/fhconfparser.py#L217)
+#### Signature
 
 ```python
-def sections() -> list[str]:
+def parseToml(
+    self,
+    file: str,
+    tomlNamespace: list[str] | None = None,
+    throws: bool = False,
+    **kwargs
+) -> list[str]:
+    ...
 ```
+
+### FHConfParser().sections
+
+[Show source in fhconfparser.py:217](../../../fhconfparser/fhconfparser.py#L217)
 
 Return a list of the sections available.
 
 #### Returns
 
 - `list[str]` - A list of sections
+
+#### Signature
+
+```python
+def sections(self) -> list[str]:
+    ...
+```
+
+
