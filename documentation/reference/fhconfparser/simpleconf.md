@@ -90,5 +90,3 @@ Get an option from the commandline/ the config.
 def get(self, option: str, fallback: Any | None = None) -> Any:
     ...
 ```
-
-

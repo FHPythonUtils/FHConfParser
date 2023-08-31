@@ -414,5 +414,3 @@ Return a list of the sections available.
 def sections(self) -> list[str]:
     ...
 ```
-
-
