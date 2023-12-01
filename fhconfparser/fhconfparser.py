@@ -338,7 +338,7 @@ def _resolveNamespace(doc: dict[str, Any], namespace: list[str] | None = None) -
 	if namespace is None:
 		return doc
 	for part in namespace:
-		doc = doc[part]
+		doc = doc.get(part, {})
 	return doc
 
 

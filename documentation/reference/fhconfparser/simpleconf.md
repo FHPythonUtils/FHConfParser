@@ -65,8 +65,7 @@ sc.get("zero", False) # Provide the actual default here (used if not provided
 #### Signature
 
 ```python
-class SimpleConf:
-    ...
+class SimpleConf: ...
 ```
 
 ### SimpleConf().get
@@ -87,6 +86,5 @@ Get an option from the commandline/ the config.
 #### Signature
 
 ```python
-def get(self, option: str, fallback: Any | None = None) -> Any:
-    ...
+def get(self, option: str, fallback: Any | None = None) -> Any: ...
 ```

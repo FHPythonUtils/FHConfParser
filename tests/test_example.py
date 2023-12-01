@@ -49,3 +49,14 @@ def test_toml():
 	assert toml.sections() == ["section"]
 	assert toml.options("section") == ["a", "b", "c", "d"]
 	assert toml.get("section", "a") == "b"
+
+
+def test_toml_no_section():
+	toml = fhconfparser.FHConfParser()
+	namespace = ["section"]
+	toml.parseConfigList(
+		[(f"{THISDIR}/data/example_no_section.toml", "toml")],
+		namespace,
+		namespace,
+	)
+	assert toml.data == {}

@@ -3,6 +3,10 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2023 - 2023/12/01
+
+- fix: crash when a namespace doesn't exist https://github.com/FHPythonUtils/LicenseCheck/issues/65
+
 ## 2022 - 2022/01/27
 
 - Update deps

@@ -38,8 +38,7 @@ FHConfParser.
 #### Signature
 
 ```python
-class FHConfParser:
-    ...
+class FHConfParser: ...
 ```
 
 ### FHConfParser().defaults
@@ -55,8 +54,7 @@ Return a dictionary containing the defaults.
 #### Signature
 
 ```python
-def defaults(self) -> dict[str, Any]:
-    ...
+def defaults(self) -> dict[str, Any]: ...
 ```
 
 ### FHConfParser().get
@@ -79,8 +77,7 @@ Defaults to None.
 #### Signature
 
 ```python
-def get(self, section: str | None, option: str, fallback: Any = None) -> Any:
-    ...
+def get(self, section: str | None, option: str, fallback: Any = None) -> Any: ...
 ```
 
 ### FHConfParser().getbool
@@ -107,8 +104,7 @@ the value uncasted. Defaults to True
 ```python
 def getbool(
     self, section: str | None, option: str, fallback: Any = None, strict: bool = True
-) -> bool:
-    ...
+) -> bool: ...
 ```
 
 ### FHConfParser().getfloat
@@ -135,8 +131,7 @@ the value uncasted. Defaults to True
 ```python
 def getfloat(
     self, section: str | None, option: str, fallback: Any = None, strict: bool = True
-) -> float:
-    ...
+) -> float: ...
 ```
 
 ### FHConfParser().getint
@@ -163,8 +158,7 @@ the value uncasted. Defaults to True
 ```python
 def getint(
     self, section: str | None, option: str, fallback: Any = None, strict: bool = True
-) -> int:
-    ...
+) -> int: ...
 ```
 
 ### FHConfParser().getstr
@@ -191,8 +185,7 @@ the value uncasted. Defaults to True
 ```python
 def getstr(
     self, section: str | None, option: str, fallback: Any = None, strict: bool = True
-) -> str:
-    ...
+) -> str: ...
 ```
 
 ### FHConfParser().hasOption
@@ -213,8 +206,7 @@ Return True if the option present in the data rep (under a given section.
 #### Signature
 
 ```python
-def hasOption(self, section: str | None, option: str) -> bool:
-    ...
+def hasOption(self, section: str | None, option: str) -> bool: ...
 ```
 
 ### FHConfParser().hasSection
@@ -234,8 +226,7 @@ Return True if the section present in the data rep.
 #### Signature
 
 ```python
-def hasSection(self, section: str | None) -> bool:
-    ...
+def hasSection(self, section: str | None) -> bool: ...
 ```
 
 ### FHConfParser().options
@@ -255,8 +246,7 @@ Return a list of options available in the specified section.
 #### Signature
 
 ```python
-def options(self, section: str | None) -> list[str]:
-    ...
+def options(self, section: str | None) -> list[str]: ...
 ```
 
 ### FHConfParser().parseConfigList
@@ -296,8 +286,7 @@ def parseConfigList(
     confList: list[tuple[str, str]],
     tomlNamespace: list[str] | None = None,
     jsonNamespace: list[str] | None = None,
-) -> list[str]:
-    ...
+) -> list[str]: ...
 ```
 
 ### FHConfParser().parseIni
@@ -324,8 +313,7 @@ Defaults to False.
 #### Signature
 
 ```python
-def parseIni(self, file: str, throws: bool = False, **kwargs) -> list[str]:
-    ...
+def parseIni(self, file: str, throws: bool = False, **kwargs) -> list[str]: ...
 ```
 
 ### FHConfParser().parseJson
@@ -359,8 +347,7 @@ def parseJson(
     jsonNamespace: list[str] | None = None,
     throws: bool = False,
     **kwargs
-) -> list[str]:
-    ...
+) -> list[str]: ...
 ```
 
 ### FHConfParser().parseToml
@@ -394,8 +381,7 @@ def parseToml(
     tomlNamespace: list[str] | None = None,
     throws: bool = False,
     **kwargs
-) -> list[str]:
-    ...
+) -> list[str]: ...
 ```
 
 ### FHConfParser().sections
@@ -411,6 +397,5 @@ Return a list of the sections available.
 #### Signature
 
 ```python
-def sections(self) -> list[str]:
-    ...
+def sections(self) -> list[str]: ...
 ```
