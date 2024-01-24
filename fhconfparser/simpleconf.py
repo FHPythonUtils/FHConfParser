@@ -56,6 +56,7 @@ class SimpleConf:
 	can be used to override config options
 
 	Args:
+	----
 		configParser (FHConfParser): config parser
 		section (str): section to use
 		args (dict[str, Any]): some dictionary of commandline args.
@@ -104,10 +105,12 @@ class SimpleConf:
 		"""Get an option from the commandline/ the config.
 
 		Args:
+		----
 			option (str): option name
 			fallback (Optional[Any]): value to fallback to. Default=None
 
 		Returns:
+		-------
 			Any: command-line option or config option
 		"""
 		conf = self.configParser.get(self.section, option, fallback)

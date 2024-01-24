@@ -1,0 +1,4 @@
+[section]
+key1 = "value1"
+key2 : "value2"  # Invalid, should use '=' instead of ':'
+key3 = "value3"

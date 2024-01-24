@@ -1,7 +1,6 @@
 # Fhconfparser
 
-[Fhconfparser Index](../README.md#fhconfparser-index) /
-Fhconfparser
+[Fhconfparser Index](../README.md#fhconfparser-index) / Fhconfparser
 
 > Auto-generated documentation for [fhconfparser](../../../fhconfparser/__init__.py) module.
 

@@ -1,8 +1,6 @@
 # FHConfParser
 
-[Fhconfparser Index](../README.md#fhconfparser-index) /
-[Fhconfparser](./index.md#fhconfparser) /
-FHConfParser
+[Fhconfparser Index](../README.md#fhconfparser-index) / [Fhconfparser](./index.md#fhconfparser) / FHConfParser
 
 > Auto-generated documentation for [fhconfparser.fhconfparser](../../../fhconfparser/fhconfparser.py) module.
 
@@ -22,18 +20,20 @@ FHConfParser
     - [FHConfParser().parseJson](#fhconfparser()parsejson)
     - [FHConfParser().parseToml](#fhconfparser()parsetoml)
     - [FHConfParser().sections](#fhconfparser()sections)
+  - [_cast](#_cast)
+  - [_resolveNamespace](#_resolvenamespace)
 
 ## FHConfParser
 
-[Show source in fhconfparser.py:28](../../../fhconfparser/fhconfparser.py#L28)
+[Show source in fhconfparser.py:27](../../../fhconfparser/fhconfparser.py#L27)
 
 FHConfParser.
 
-#### Returns
-
-- [FHConfParser](#fhconfparser) - parser object.
-- Call `parseConfigList` to parse files
-- Call `data` to access the internal rep
+Returns
+-------
+ FHConfParser: parser object.
+ - Call `parseConfigList` to parse files
+ - Call `data` to access the internal rep
 
 #### Signature
 
@@ -43,13 +43,13 @@ class FHConfParser: ...
 
 ### FHConfParser().defaults
 
-[Show source in fhconfparser.py:209](../../../fhconfparser/fhconfparser.py#L209)
+[Show source in fhconfparser.py:237](../../../fhconfparser/fhconfparser.py#L237)
 
 Return a dictionary containing the defaults.
 
-#### Returns
-
-- `list[str]` - A dictionary containing the defaults
+Returns
+-------
+ list[str]: A dictionary containing the defaults
 
 #### Signature
 
@@ -59,20 +59,22 @@ def defaults(self) -> dict[str, Any]: ...
 
 ### FHConfParser().get
 
-[Show source in fhconfparser.py:236](../../../fhconfparser/fhconfparser.py#L236)
+[Show source in fhconfparser.py:268](../../../fhconfparser/fhconfparser.py#L268)
 
 Get a value from section.option with some fallback for if it doesn't exist.
 
 #### Arguments
 
-- `section` *str* - the specified section
-- `option` *str* - the specified key/ option
-- `fallback` *Any, optional* - the fallback value for if it doesn't exist.
-Defaults to None.
+----
+ - `section` *str* - the specified section
+ - `option` *str* - the specified key/ option
+ - `fallback` *Any, optional* - the fallback value for if it doesn't exist.
+ Defaults to None.
 
 #### Returns
 
-- `Any` - the value at section.option or fallback
+-------
+ - `Any` - the value at section.option or fallback
 
 #### Signature
 
@@ -82,22 +84,24 @@ def get(self, section: str | None, option: str, fallback: Any = None) -> Any: ..
 
 ### FHConfParser().getbool
 
-[Show source in fhconfparser.py:290](../../../fhconfparser/fhconfparser.py#L290)
+[Show source in fhconfparser.py:328](../../../fhconfparser/fhconfparser.py#L328)
 
 Get a value from section.option with some fallback for if it doesn't exist as an bool.
 
 #### Arguments
 
-- `section` *str* - the specified section
-- `option` *str* - the specified key/ option
-- `fallback` *Any, optional* - the fallback value for if it doesn't exist.
-Defaults to None.
-- `strict` *bool* - raise an error if the cast fails when true, else return
-the value uncasted. Defaults to True
+----
+ - `section` *str* - the specified section
+ - `option` *str* - the specified key/ option
+ - `fallback` *Any, optional* - the fallback value for if it doesn't exist.
+ Defaults to None.
+ - `strict` *bool* - raise an error if the cast fails when true, else return
+ the value un-casted. Defaults to True
 
 #### Returns
 
-- `bool` - the value at section.option or fallback (Any if strict=False)
+-------
+ - `bool` - the value at section.option or fallback (Any if strict=False)
 
 #### Signature
 
@@ -109,22 +113,24 @@ def getbool(
 
 ### FHConfParser().getfloat
 
-[Show source in fhconfparser.py:272](../../../fhconfparser/fhconfparser.py#L272)
+[Show source in fhconfparser.py:308](../../../fhconfparser/fhconfparser.py#L308)
 
 Get a value from section.option with some fallback for if it doesn't exist as an float.
 
 #### Arguments
 
-- `section` *str* - the specified section
-- `option` *str* - the specified key/ option
-- `fallback` *Any, optional* - the fallback value for if it doesn't exist.
-Defaults to None.
-- `strict` *bool* - raise an error if the cast fails when true, else return
-the value uncasted. Defaults to True
+----
+ - `section` *str* - the specified section
+ - `option` *str* - the specified key/ option
+ - `fallback` *Any, optional* - the fallback value for if it doesn't exist.
+ Defaults to None.
+ - `strict` *bool* - raise an error if the cast fails when true, else return
+ the value un-casted. Defaults to True
 
 #### Returns
 
-- `float` - the value at section.option or fallback (Any if strict=False)
+-------
+ - `float` - the value at section.option or fallback (Any if strict=False)
 
 #### Signature
 
@@ -136,22 +142,24 @@ def getfloat(
 
 ### FHConfParser().getint
 
-[Show source in fhconfparser.py:254](../../../fhconfparser/fhconfparser.py#L254)
+[Show source in fhconfparser.py:288](../../../fhconfparser/fhconfparser.py#L288)
 
 Get a value from section.option with some fallback for if it doesn't exist as an int.
 
 #### Arguments
 
-- `section` *str* - the specified section
-- `option` *str* - the specified key/ option
-- `fallback` *Any, optional* - the fallback value for if it doesn't exist.
-Defaults to None.
-- `strict` *bool* - raise an error if the cast fails when true, else return
-the value uncasted. Defaults to True
+----
+ - `section` *str* - the specified section
+ - `option` *str* - the specified key/ option
+ - `fallback` *Any, optional* - the fallback value for if it doesn't exist.
+ Defaults to None.
+ - `strict` *bool* - raise an error if the cast fails when true, else return
+ the value un-casted. Defaults to True
 
 #### Returns
 
-- `int` - the value at section.option or fallback (Any if strict=False)
+-------
+ - `int` - the value at section.option or fallback (Any if strict=False)
 
 #### Signature
 
@@ -163,22 +171,24 @@ def getint(
 
 ### FHConfParser().getstr
 
-[Show source in fhconfparser.py:308](../../../fhconfparser/fhconfparser.py#L308)
+[Show source in fhconfparser.py:348](../../../fhconfparser/fhconfparser.py#L348)
 
 Get a value from section.option with some fallback for if it doesn't exist as an str.
 
 #### Arguments
 
-- `section` *str* - the specified section
-- `option` *str* - the specified key/ option
-- `fallback` *Any, optional* - the fallback value for if it doesn't exist.
-Defaults to None.
-- `strict` *bool* - raise an error if the cast fails when true, else return
-the value uncasted. Defaults to True
+----
+ - `section` *str* - the specified section
+ - `option` *str* - the specified key/ option
+ - `fallback` *Any, optional* - the fallback value for if it doesn't exist.
+ Defaults to None.
+ - `strict` *bool* - raise an error if the cast fails when true, else return
+ the value un-casted. Defaults to True
 
 #### Returns
 
-- `str` - the value at section.option or fallback (Any if strict=False)
+-------
+ - `str` - the value at section.option or fallback (Any if strict=False)
 
 #### Signature
 
@@ -190,18 +200,20 @@ def getstr(
 
 ### FHConfParser().hasOption
 
-[Show source in fhconfparser.py:197](../../../fhconfparser/fhconfparser.py#L197)
+[Show source in fhconfparser.py:223](../../../fhconfparser/fhconfparser.py#L223)
 
 Return True if the option present in the data rep (under a given section.
 
 #### Arguments
 
-- `section` *str* - section to get
-- `option` *str* - ... and option to get
+----
+ - `section` *str* - section to get
+ - `option` *str* - ... and option to get
 
 #### Returns
 
-- `bool` - Return True if the option present in the data rep (under a given section
+-------
+ - `bool` - Return True if the option present in the data rep (under a given section
 
 #### Signature
 
@@ -211,17 +223,19 @@ def hasOption(self, section: str | None, option: str) -> bool: ...
 
 ### FHConfParser().hasSection
 
-[Show source in fhconfparser.py:186](../../../fhconfparser/fhconfparser.py#L186)
+[Show source in fhconfparser.py:210](../../../fhconfparser/fhconfparser.py#L210)
 
 Return True if the section present in the data rep.
 
 #### Arguments
 
-- `section` *str* - section to get
+----
+ - `section` *str* - section to get
 
 #### Returns
 
-- `bool` - Return True if the section present in the data rep.
+-------
+ - `bool` - Return True if the section present in the data rep.
 
 #### Signature
 
@@ -231,17 +245,19 @@ def hasSection(self, section: str | None) -> bool: ...
 
 ### FHConfParser().options
 
-[Show source in fhconfparser.py:225](../../../fhconfparser/fhconfparser.py#L225)
+[Show source in fhconfparser.py:255](../../../fhconfparser/fhconfparser.py#L255)
 
 Return a list of options available in the specified section.
 
 #### Arguments
 
-- `section` *str* - the specified section
+----
+ - `section` *str* - the specified section
 
 #### Returns
 
-- `list[str]` - list of options
+-------
+ - `list[str]` - list of options
 
 #### Signature
 
@@ -269,14 +285,16 @@ takes precedent.
 
 #### Arguments
 
-confList (list[tuple[str, str]]): A list of tuples of config files
-and format. e.g. [("pyproject.toml", "toml"), (".config.ini", "ini")]
-- `tomlNamespace` *list[str], optional* - table to treat as root . Defaults to None.
-- `jsonNamespace` *list[str], optional* - define root. Defaults to None.
+----
+ confList (list[tuple[str, str]]): A list of tuples of config files
+ and format. e.g. [("pyproject.toml", "toml"), (".config.ini", "ini")]
+ - `tomlNamespace` *list[str], optional* - table to treat as root . Defaults to None.
+ - `jsonNamespace` *list[str], optional* - define root. Defaults to None.
 
 #### Returns
 
-- `list[str]` - list of successfully parsed files
+-------
+ - `list[str]` - list of successfully parsed files
 
 #### Signature
 
@@ -291,111 +309,184 @@ def parseConfigList(
 
 ### FHConfParser().parseIni
 
-[Show source in fhconfparser.py:81](../../../fhconfparser/fhconfparser.py#L81)
+[Show source in fhconfparser.py:84](../../../fhconfparser/fhconfparser.py#L84)
 
 Parse a single ini file and update the internal rep with the new data.
 
 #### Arguments
 
-- `file` *str* - config file to parse
-- `throws` *bool* - Throw an exception if there is a parsing failure.
-Defaults to False.
-- `kwargs` - ignored
+----
+ file (str | Path): config file to parse
+ - `throws` *bool* - Throw an exception if there is a parsing failure.
+ Defaults to False.
+ - `kwargs` - ignored
 
 #### Raises
 
-- `ParsingError` - if throws = True
+------
+ - `ParsingError` - if throws = True
 
 #### Returns
 
-- `list[str]` - list of successfully parsed files
+-------
+ - `list[str]` - list of successfully parsed files
 
 #### Signature
 
 ```python
-def parseIni(self, file: str, throws: bool = False, **kwargs) -> list[str]: ...
+def parseIni(
+    self, file: str | Path, throws: bool = False, **kwargs: dict[str, Any]
+) -> list[str]: ...
 ```
 
 ### FHConfParser().parseJson
 
-[Show source in fhconfparser.py:157](../../../fhconfparser/fhconfparser.py#L157)
+[Show source in fhconfparser.py:173](../../../fhconfparser/fhconfparser.py#L173)
 
 Parse a single json file and update the internal rep with the new data.
 
 #### Arguments
 
-- `file` *str* - config file to parse
-- `jsonNamespace` *list[str], optional* - define root. Defaults to None.
-- `throws` *bool* - Throw an exception if there is a parsing failure.
-Defaults to False.
-- `kwargs` - ignored
+----
+ file (str | Path): config file to parse
+ - `jsonNamespace` *list[str], optional* - define root. Defaults to None.
+ - `throws` *bool* - Throw an exception if there is a parsing failure.
+ Defaults to False.
+ - `kwargs` - ignored
 
 #### Raises
 
-- `JSONDecodeError` - if throws = True
+------
+ - `JSONDecodeError` - if throws = True
 
 #### Returns
 
-- `list[str]` - list of successfully parsed files
+-------
+ - `list[str]` - list of successfully parsed files
 
 #### Signature
 
 ```python
 def parseJson(
     self,
-    file: str,
+    file: str | Path,
     jsonNamespace: list[str] | None = None,
     throws: bool = False,
-    **kwargs
+    **kwargs: dict[str, Any]
 ) -> list[str]: ...
 ```
 
 ### FHConfParser().parseToml
 
-[Show source in fhconfparser.py:128](../../../fhconfparser/fhconfparser.py#L128)
+[Show source in fhconfparser.py:136](../../../fhconfparser/fhconfparser.py#L136)
 
 Parse a single toml file and update the internal rep with the new data.
 
 #### Arguments
 
-- `file` *str* - config file to parse
-- `tomlNamespace` *list[str], optional* - table to treat as root . Defaults to None.
-- `throws` *bool* - Throw an exception if there is a parsing failure.
-Defaults to False.
-- `kwargs` - ignored
+----
+ file (str | Path): config file to parse
+ - `tomlNamespace` *list[str], optional* - table to treat as root . Defaults to None.
+ - `throws` *bool* - Throw an exception if there is a parsing failure.
+ Defaults to False.
+ - `kwargs` - ignored
 
 #### Raises
 
-- `ParseError` - if throws = True
+------
+ - `ParseError` - if throws = True
 
 #### Returns
 
-- `list[str]` - list of successfully parsed files
+-------
+ - `list[str]` - list of successfully parsed files
 
 #### Signature
 
 ```python
 def parseToml(
     self,
-    file: str,
+    file: str | Path,
     tomlNamespace: list[str] | None = None,
     throws: bool = False,
-    **kwargs
+    **kwargs: dict[str, Any]
 ) -> list[str]: ...
 ```
 
 ### FHConfParser().sections
 
-[Show source in fhconfparser.py:217](../../../fhconfparser/fhconfparser.py#L217)
+[Show source in fhconfparser.py:246](../../../fhconfparser/fhconfparser.py#L246)
 
 Return a list of the sections available.
 
-#### Returns
-
-- `list[str]` - A list of sections
+Returns
+-------
+ list[str]: A list of sections
 
 #### Signature
 
 ```python
 def sections(self) -> list[str]: ...
+```
+
+
+
+## _cast
+
+[Show source in fhconfparser.py:389](../../../fhconfparser/fhconfparser.py#L389)
+
+Handy cast function. Raises a ValueError if fails when strict=True else...
+
+returns data unconverted.
+
+#### Arguments
+
+----
+ - `payload` *Any* - data to convert
+ castFunc (Callable[[Any], Any]): cast function eg int
+ - `strict` *bool, optional* - throw error if true, otherwise return payload.
+ Defaults to True.
+
+#### Raises
+
+------
+ - `ValueError` - if the cast fails and strict=True
+
+#### Returns
+
+-------
+ - `Any` - casted payload
+
+#### Signature
+
+```python
+def _cast(payload: Any, castFunc: Callable[[Any], Any], strict: bool = True) -> Any: ...
+```
+
+
+
+## _resolveNamespace
+
+[Show source in fhconfparser.py:369](../../../fhconfparser/fhconfparser.py#L369)
+
+Take some document object and set the root to the namespace.
+
+#### Arguments
+
+----
+ doc (dict[str, Any]): some document object dict[str, Any]
+ - `namespace` *list[str], optional* - a list representing a namespace. e.g.
+ ["tool", "poetry"]. Defaults to None.
+
+#### Returns
+
+-------
+ - `dict[str,` *Any]* - resolved document
+
+#### Signature
+
+```python
+def _resolveNamespace(
+    doc: dict[str, Any], namespace: list[str] | None = None
+) -> dict[str, Any]: ...
 ```

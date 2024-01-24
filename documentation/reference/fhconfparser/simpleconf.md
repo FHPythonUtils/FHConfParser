@@ -1,8 +1,6 @@
 # SimpleConf
 
-[Fhconfparser Index](../README.md#fhconfparser-index) /
-[Fhconfparser](./index.md#fhconfparser) /
-SimpleConf
+[Fhconfparser Index](../README.md#fhconfparser-index) / [Fhconfparser](./index.md#fhconfparser) / SimpleConf
 
 > Auto-generated documentation for [fhconfparser.simpleconf](../../../fhconfparser/simpleconf.py) module.
 
@@ -22,10 +20,11 @@ can be used to override config options
 
 #### Arguments
 
-- `configParser` *FHConfParser* - config parser
-- `section` *str* - section to use
-args (dict[str, Any]): some dictionary of commandline args.
-eg. vars(parser.parse_args())
+----
+ - `configParser` *FHConfParser* - config parser
+ - `section` *str* - section to use
+ args (dict[str, Any]): some dictionary of commandline args.
+ eg. vars(parser.parse_args())
 
 Example use:
 
@@ -70,18 +69,20 @@ class SimpleConf: ...
 
 ### SimpleConf().get
 
-[Show source in simpleconf.py:103](../../../fhconfparser/simpleconf.py#L103)
+[Show source in simpleconf.py:104](../../../fhconfparser/simpleconf.py#L104)
 
 Get an option from the commandline/ the config.
 
 #### Arguments
 
-- `option` *str* - option name
-- `fallback` *Optional[Any]* - value to fallback to. Default=None
+----
+ - `option` *str* - option name
+ - `fallback` *Optional[Any]* - value to fallback to. Default=None
 
 #### Returns
 
-- `Any` - command-line option or config option
+-------
+ - `Any` - command-line option or config option
 
 #### Signature
 

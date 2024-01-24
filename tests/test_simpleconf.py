@@ -12,8 +12,8 @@ from fhconfparser import FHConfParser, SimpleConf
 args = vars(argparse.Namespace(args=True))
 
 
-def test_simpleconf():
-	# ConfigParser (Parses in the following order: `pyproject.toml`, `setup.cfg`
+def test_simpleconf() -> None:
+	# ConfigParser parses in the following order: `pyproject.toml`, `setup.cfg`
 	configparser = FHConfParser()
 	assert (
 		len(

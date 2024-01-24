@@ -16,7 +16,6 @@ from __future__ import annotations
 import configparser
 import json
 import json.decoder
-import os.path
 from pathlib import Path
 from typing import Any, Callable
 
@@ -28,7 +27,8 @@ import tomli
 class FHConfParser:
 	"""FHConfParser.
 
-	Returns:
+	Returns
+	-------
 		FHConfParser: parser object.
 		- Call `parseConfigList` to parse files
 		- Call `data` to access the internal rep
@@ -55,12 +55,14 @@ class FHConfParser:
 		takes precedent.
 
 		Args:
+		----
 			confList (list[tuple[str, str]]): A list of tuples of config files
 			and format. e.g. [("pyproject.toml", "toml"), (".config.ini", "ini")]
 			tomlNamespace (list[str], optional): table to treat as root . Defaults to None.
 			jsonNamespace (list[str], optional): define root. Defaults to None.
 
 		Returns:
+		-------
 			list[str]: list of successfully parsed files
 		"""
 		readOK = []
@@ -70,36 +72,42 @@ class FHConfParser:
 			"json": self.parseJson,
 		}
 		for conf in confList:
-			if os.path.isfile(conf[0]):
+			pth = Path(conf[0])
+			if pth.is_file():
 				readOK.extend(
 					dispatchers[conf[1]](
-						conf[0], tomlNamespace=tomlNamespace, jsonNamespace=jsonNamespace
+						pth, tomlNamespace=tomlNamespace, jsonNamespace=jsonNamespace
 					)
 				)
 		return readOK
 
-	def parseIni(self, file: str, throws: bool = False, **kwargs) -> list[str]:
+	def parseIni(
+		self, file: str | Path, *, throws: bool = False, **kwargs: dict[str, Any]
+	) -> list[str]:
 		"""Parse a single ini file and update the internal rep with the new data.
 
 		Args:
-			file (str): config file to parse
+		----
+			file (str | Path): config file to parse
 			throws (bool): Throw an exception if there is a parsing failure.
 			Defaults to False.
 			kwargs: ignored
 
 		Raises:
+		------
 			ParsingError: if throws = True
 
 		Returns:
+		-------
 			list[str]: list of successfully parsed files
 		"""
 		del kwargs
 		ini = configparser.ConfigParser()
 		try:
 			ini.read(file)
-		except configparser.ParsingError as error:
+		except configparser.ParsingError:
 			if throws:
-				raise error
+				raise
 			return []
 
 		# Populate the data
@@ -123,73 +131,91 @@ class FHConfParser:
 				options[option] = data
 			self.data[section] = options
 
-		return [file]
+		return [str(file)]
 
 	def parseToml(
-		self, file: str, tomlNamespace: list[str] | None = None, throws: bool = False, **kwargs
+		self,
+		file: str | Path,
+		tomlNamespace: list[str] | None = None,
+		*,
+		throws: bool = False,
+		**kwargs: dict[str, Any],
 	) -> list[str]:
 		"""Parse a single toml file and update the internal rep with the new data.
 
 		Args:
-			file (str): config file to parse
+		----
+			file (str | Path): config file to parse
 			tomlNamespace (list[str], optional): table to treat as root . Defaults to None.
 			throws (bool): Throw an exception if there is a parsing failure.
 			Defaults to False.
 			kwargs: ignored
 
 		Raises:
+		------
 			ParseError: if throws = True
 
 		Returns:
+		-------
 			list[str]: list of successfully parsed files
 		"""
 		del kwargs
 		try:
 			doc = tomli.loads(Path(file).read_text(encoding="utf-8"))
-		except tomli.TOMLDecodeError as error:
+		except tomli.TOMLDecodeError:
 			if throws:
-				raise error
+				raise
 			return []
 		# **new, **original to prevent overwriting existing values
 		self.data = {**_resolveNamespace(doc, tomlNamespace), **self.data}
-		return [file]
+		return [str(file)]
 
 	def parseJson(
-		self, file: str, jsonNamespace: list[str] | None = None, throws: bool = False, **kwargs
+		self,
+		file: str | Path,
+		jsonNamespace: list[str] | None = None,
+		*,
+		throws: bool = False,
+		**kwargs: dict[str, Any],
 	) -> list[str]:
 		"""Parse a single json file and update the internal rep with the new data.
 
 		Args:
-			file (str): config file to parse
+		----
+			file (str | Path): config file to parse
 			jsonNamespace (list[str], optional): define root. Defaults to None.
 			throws (bool): Throw an exception if there is a parsing failure.
 			Defaults to False.
 			kwargs: ignored
 
 		Raises:
+		------
 			JSONDecodeError: if throws = True
 
 		Returns:
+		-------
 			list[str]: list of successfully parsed files
 		"""
 		del kwargs
 		try:
 			doc = json.loads(Path(file).read_text(encoding="utf-8"))
-		except json.decoder.JSONDecodeError as error:
+		except json.decoder.JSONDecodeError:
 			if throws:
-				raise error
+				raise
 			return []
 		# **new, **original to prevent overwriting existing values
 		self.data = {**_resolveNamespace(doc, jsonNamespace), **self.data}
-		return [file]
+		return [str(file)]
 
 	def hasSection(self, section: str | None) -> bool:
 		"""Return True if the section present in the data rep.
 
 		Args:
+		----
 			section (str): section to get
 
 		Returns:
+		-------
 			bool: Return True if the section present in the data rep.
 		"""
 		return section in self.data
@@ -198,10 +224,12 @@ class FHConfParser:
 		"""Return True if the option present in the data rep (under a given section.
 
 		Args:
+		----
 			section (str): section to get
 			option (str): ... and option to get
 
 		Returns:
+		-------
 			bool: Return True if the option present in the data rep (under a given section
 		"""
 		return self.hasSection(section) and option in self.data[section]
@@ -209,7 +237,8 @@ class FHConfParser:
 	def defaults(self) -> dict[str, Any]:
 		"""Return a dictionary containing the defaults.
 
-		Returns:
+		Returns
+		-------
 			list[str]: A dictionary containing the defaults
 		"""
 		return {x: self.data[x] for x in self.data if not isinstance(self.data[x], dict)}
@@ -217,7 +246,8 @@ class FHConfParser:
 	def sections(self) -> list[str]:
 		"""Return a list of the sections available.
 
-		Returns:
+		Returns
+		-------
 			list[str]: A list of sections
 		"""
 		return [x for x in self.data if isinstance(self.data[x], dict)]
@@ -226,9 +256,11 @@ class FHConfParser:
 		"""Return a list of options available in the specified section.
 
 		Args:
+		----
 			section (str): the specified section
 
 		Returns:
+		-------
 			list[str]: list of options
 		"""
 		return list(self.data[section])
@@ -237,12 +269,14 @@ class FHConfParser:
 		"""Get a value from section.option with some fallback for if it doesn't exist.
 
 		Args:
+		----
 			section (str): the specified section
 			option (str): the specified key/ option
 			fallback (Any, optional): the fallback value for if it doesn't exist.
 			Defaults to None.
 
 		Returns:
+		-------
 			Any: the value at section.option or fallback
 		"""
 		if section is None and option in self.data:
@@ -252,87 +286,97 @@ class FHConfParser:
 		return fallback
 
 	def getint(
-		self, section: str | None, option: str, fallback: Any = None, strict: bool = True
+		self, section: str | None, option: str, fallback: Any = None, *, strict: bool = True
 	) -> int:
 		"""Get a value from section.option with some fallback for if it doesn't exist as an int.
 
 		Args:
+		----
 			section (str): the specified section
 			option (str): the specified key/ option
 			fallback (Any, optional): the fallback value for if it doesn't exist.
 			Defaults to None.
 			strict (bool): raise an error if the cast fails when true, else return
-			the value uncasted. Defaults to True
+			the value un-casted. Defaults to True
 
 		Returns:
+		-------
 			int: the value at section.option or fallback (Any if strict=False)
 		"""
-		return _cast(self.get(section, option, fallback), int, strict)
+		return _cast(self.get(section, option, fallback), int, strict=strict)
 
 	def getfloat(
-		self, section: str | None, option: str, fallback: Any = None, strict: bool = True
+		self, section: str | None, option: str, fallback: Any = None, *, strict: bool = True
 	) -> float:
 		"""Get a value from section.option with some fallback for if it doesn't exist as an float.
 
 		Args:
+		----
 			section (str): the specified section
 			option (str): the specified key/ option
 			fallback (Any, optional): the fallback value for if it doesn't exist.
 			Defaults to None.
 			strict (bool): raise an error if the cast fails when true, else return
-			the value uncasted. Defaults to True
+			the value un-casted. Defaults to True
 
 		Returns:
+		-------
 			float: the value at section.option or fallback (Any if strict=False)
 		"""
-		return _cast(self.get(section, option, fallback), float, strict)
+		return _cast(self.get(section, option, fallback), float, strict=strict)
 
 	def getbool(
-		self, section: str | None, option: str, fallback: Any = None, strict: bool = True
+		self, section: str | None, option: str, fallback: Any = None, *, strict: bool = True
 	) -> bool:
 		"""Get a value from section.option with some fallback for if it doesn't exist as an bool.
 
 		Args:
+		----
 			section (str): the specified section
 			option (str): the specified key/ option
 			fallback (Any, optional): the fallback value for if it doesn't exist.
 			Defaults to None.
 			strict (bool): raise an error if the cast fails when true, else return
-			the value uncasted. Defaults to True
+			the value un-casted. Defaults to True
 
 		Returns:
+		-------
 			bool: the value at section.option or fallback (Any if strict=False)
 		"""
-		return _cast(self.get(section, option, fallback), bool, strict)
+		return _cast(self.get(section, option, fallback), bool, strict=strict)
 
 	def getstr(
-		self, section: str | None, option: str, fallback: Any = None, strict: bool = True
+		self, section: str | None, option: str, fallback: Any = None, *, strict: bool = True
 	) -> str:
 		"""Get a value from section.option with some fallback for if it doesn't exist as an str.
 
 		Args:
+		----
 			section (str): the specified section
 			option (str): the specified key/ option
 			fallback (Any, optional): the fallback value for if it doesn't exist.
 			Defaults to None.
 			strict (bool): raise an error if the cast fails when true, else return
-			the value uncasted. Defaults to True
+			the value un-casted. Defaults to True
 
 		Returns:
+		-------
 			str: the value at section.option or fallback (Any if strict=False)
 		"""
-		return _cast(self.get(section, option, fallback), str, strict)
+		return _cast(self.get(section, option, fallback), str, strict=strict)
 
 
 def _resolveNamespace(doc: dict[str, Any], namespace: list[str] | None = None) -> dict[str, Any]:
 	"""Take some document object and set the root to the namespace.
 
 	Args:
+	----
 		doc (dict[str, Any]): some document object dict[str, Any]
 		namespace (list[str], optional): a list representing a namespace. e.g.
 		["tool", "poetry"]. Defaults to None.
 
 	Returns:
+	-------
 		dict[str, Any]: resolved document
 	"""
 	if namespace is None:
@@ -342,26 +386,29 @@ def _resolveNamespace(doc: dict[str, Any], namespace: list[str] | None = None) -
 	return doc
 
 
-def _cast(payload: Any, castFunc: Callable[[Any], Any], strict: bool = True) -> Any:
+def _cast(payload: Any, castFunc: Callable[[Any], Any], *, strict: bool = True) -> Any:
 	"""Handy cast function. Raises a ValueError if fails when strict=True else...
 
 	returns data unconverted.
 
 	Args:
+	----
 		payload (Any): data to convert
 		castFunc (Callable[[Any], Any]): cast function eg int
 		strict (bool, optional): throw error if true, otherwise return payload.
 		Defaults to True.
 
 	Raises:
+	------
 		ValueError: if the cast fails and strict=True
 
 	Returns:
+	-------
 		Any: casted payload
 	"""
 	try:
 		payload = castFunc(payload)
-	except ValueError as error:
+	except ValueError:
 		if strict:
-			raise error
+			raise
 	return payload
