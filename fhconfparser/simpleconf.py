@@ -69,32 +69,33 @@ class SimpleConf:
 
 	parser = argparse.ArgumentParser(argument_default=argparse.SUPPRESS)
 	parser.add_argument(
-		"--file",
-		"-o",
-		help="Filename to write to (omit for stdout)",
+	    "--file",
+	    "-o",
+	    help="Filename to write to (omit for stdout)",
 	)
 	...
 	parser.add_argument(
-		"--zero",
-		"-0",
-		help="Return non zero exit code if an incompatible license is found",
-		action="store_true",
+	    "--zero",
+	    "-0",
+	    help="Return non zero exit code if an incompatible license is found",
+	    action="store_true",
 	)
 	args = vars(parser.parse_args())
 
 	# ConfigParser (Parses in the following order: `pyproject.toml`, `setup.cfg`
 	configparser = FHConfParser()
 	configparser.parseConfigList(
-		[("pyproject.toml", "toml"), ("setup.cfg", "ini")],
-		["tool"],
-		["tool"],
+	    [("pyproject.toml", "toml"), ("setup.cfg", "ini")],
+	    ["tool"],
+	    ["tool"],
 	)
 
 	sc = SimpleConf(configparser, "licensecheck", args)
 
-	sc.get("zero", False) # Provide the actual default here (used if not provided
-						  # from the command line or through a config file)
+	sc.get("zero", False)  # Provide the actual default here (used if not provided
+	# from the command line or through a config file)
 	```
+
 	"""
 
 	configParser: FHConfParser
@@ -112,6 +113,7 @@ class SimpleConf:
 		Returns:
 		-------
 			Any: command-line option or config option
+
 		"""
 		conf = self.configParser.get(self.section, option, fallback)
 		return self.args[option] if option in self.args else conf

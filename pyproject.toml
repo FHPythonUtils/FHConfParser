@@ -26,12 +26,11 @@ attrs = "<24,>=23.2.0"
 tomli = "<3,>=2.0.1"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^7.4.4"
+pytest = "^8.0.2"
 handsdown = "^2.1.0"
-coverage = "^7.4.0"
-ruff = "^0.1.13"
-blackt = "^2024.0.1"
-pyright = "^1.1.348"
+coverage = "^7.4.3"
+ruff = "^0.2.2"
+pyright = "^1.1.351"
 
 [build-system]
 requires = ["poetry-core"]
@@ -48,7 +47,7 @@ ignore = [
     "ANN101",  # type annotation for self in method
     "COM812",  # enforce trailing comma
 	"D2",  # pydocstyle formatting
-    "N802", "N803", "N806", "N812", "N813",  # pep8 naming
+    "N",  # pep8 naming
     "PLR09",  # pylint refactor too many
     "TCH",  # type check blocks
     "W191"  # ignore this to allow tabs
@@ -58,9 +57,10 @@ fixable = ["ALL"]
 [tool.ruff.lint.per-file-ignores]
 "**/{tests,docs,tools}/*" = ["D", "S101", "E402"]
 
-[tool.black]
-line-length = 100
-target-version = ["py38"]
+[tool.ruff.format]
+indent-style = "tab"
+docstring-code-format = true
+line-ending = "lf"
 
 [tool.pyright]
 venvPath = "."

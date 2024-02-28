@@ -32,6 +32,7 @@ class FHConfParser:
 		FHConfParser: parser object.
 		- Call `parseConfigList` to parse files
 		- Call `data` to access the internal rep
+
 	"""
 
 	data: dict = attr.ib(factory=dict, init=False)
@@ -64,6 +65,7 @@ class FHConfParser:
 		Returns:
 		-------
 			list[str]: list of successfully parsed files
+
 		"""
 		readOK = []
 		dispatchers = {
@@ -100,6 +102,7 @@ class FHConfParser:
 		Returns:
 		-------
 			list[str]: list of successfully parsed files
+
 		"""
 		del kwargs
 		ini = configparser.ConfigParser()
@@ -158,6 +161,7 @@ class FHConfParser:
 		Returns:
 		-------
 			list[str]: list of successfully parsed files
+
 		"""
 		del kwargs
 		try:
@@ -195,6 +199,7 @@ class FHConfParser:
 		Returns:
 		-------
 			list[str]: list of successfully parsed files
+
 		"""
 		del kwargs
 		try:
@@ -217,6 +222,7 @@ class FHConfParser:
 		Returns:
 		-------
 			bool: Return True if the section present in the data rep.
+
 		"""
 		return section in self.data
 
@@ -231,6 +237,7 @@ class FHConfParser:
 		Returns:
 		-------
 			bool: Return True if the option present in the data rep (under a given section
+
 		"""
 		return self.hasSection(section) and option in self.data[section]
 
@@ -240,6 +247,7 @@ class FHConfParser:
 		Returns
 		-------
 			list[str]: A dictionary containing the defaults
+
 		"""
 		return {x: self.data[x] for x in self.data if not isinstance(self.data[x], dict)}
 
@@ -249,6 +257,7 @@ class FHConfParser:
 		Returns
 		-------
 			list[str]: A list of sections
+
 		"""
 		return [x for x in self.data if isinstance(self.data[x], dict)]
 
@@ -262,6 +271,7 @@ class FHConfParser:
 		Returns:
 		-------
 			list[str]: list of options
+
 		"""
 		return list(self.data[section])
 
@@ -278,6 +288,7 @@ class FHConfParser:
 		Returns:
 		-------
 			Any: the value at section.option or fallback
+
 		"""
 		if section is None and option in self.data:
 			return self.data[option]
@@ -302,6 +313,7 @@ class FHConfParser:
 		Returns:
 		-------
 			int: the value at section.option or fallback (Any if strict=False)
+
 		"""
 		return _cast(self.get(section, option, fallback), int, strict=strict)
 
@@ -322,6 +334,7 @@ class FHConfParser:
 		Returns:
 		-------
 			float: the value at section.option or fallback (Any if strict=False)
+
 		"""
 		return _cast(self.get(section, option, fallback), float, strict=strict)
 
@@ -342,6 +355,7 @@ class FHConfParser:
 		Returns:
 		-------
 			bool: the value at section.option or fallback (Any if strict=False)
+
 		"""
 		return _cast(self.get(section, option, fallback), bool, strict=strict)
 
@@ -362,6 +376,7 @@ class FHConfParser:
 		Returns:
 		-------
 			str: the value at section.option or fallback (Any if strict=False)
+
 		"""
 		return _cast(self.get(section, option, fallback), str, strict=strict)
 
@@ -378,6 +393,7 @@ def _resolveNamespace(doc: dict[str, Any], namespace: list[str] | None = None) -
 	Returns:
 	-------
 		dict[str, Any]: resolved document
+
 	"""
 	if namespace is None:
 		return doc
@@ -405,6 +421,7 @@ def _cast(payload: Any, castFunc: Callable[[Any], Any], *, strict: bool = True) 
 	Returns:
 	-------
 		Any: casted payload
+
 	"""
 	try:
 		payload = castFunc(payload)
