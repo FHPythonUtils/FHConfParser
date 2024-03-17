@@ -25,7 +25,7 @@
 
 ## FHConfParser
 
-[Show source in fhconfparser.py:27](../../../fhconfparser/fhconfparser.py#L27)
+[Show source in fhconfparser.py:28](../../../fhconfparser/fhconfparser.py#L28)
 
 FHConfParser.
 
@@ -43,7 +43,7 @@ class FHConfParser: ...
 
 ### FHConfParser().defaults
 
-[Show source in fhconfparser.py:244](../../../fhconfparser/fhconfparser.py#L244)
+[Show source in fhconfparser.py:245](../../../fhconfparser/fhconfparser.py#L245)
 
 Return a dictionary containing the defaults.
 
@@ -59,7 +59,7 @@ def defaults(self) -> dict[str, Any]: ...
 
 ### FHConfParser().get
 
-[Show source in fhconfparser.py:278](../../../fhconfparser/fhconfparser.py#L278)
+[Show source in fhconfparser.py:279](../../../fhconfparser/fhconfparser.py#L279)
 
 Get a value from section.option with some fallback for if it doesn't exist.
 
@@ -84,7 +84,7 @@ def get(self, section: str | None, option: str, fallback: Any = None) -> Any: ..
 
 ### FHConfParser().getbool
 
-[Show source in fhconfparser.py:341](../../../fhconfparser/fhconfparser.py#L341)
+[Show source in fhconfparser.py:342](../../../fhconfparser/fhconfparser.py#L342)
 
 Get a value from section.option with some fallback for if it doesn't exist as an bool.
 
@@ -113,7 +113,7 @@ def getbool(
 
 ### FHConfParser().getfloat
 
-[Show source in fhconfparser.py:320](../../../fhconfparser/fhconfparser.py#L320)
+[Show source in fhconfparser.py:321](../../../fhconfparser/fhconfparser.py#L321)
 
 Get a value from section.option with some fallback for if it doesn't exist as an float.
 
@@ -142,7 +142,7 @@ def getfloat(
 
 ### FHConfParser().getint
 
-[Show source in fhconfparser.py:299](../../../fhconfparser/fhconfparser.py#L299)
+[Show source in fhconfparser.py:300](../../../fhconfparser/fhconfparser.py#L300)
 
 Get a value from section.option with some fallback for if it doesn't exist as an int.
 
@@ -171,7 +171,7 @@ def getint(
 
 ### FHConfParser().getstr
 
-[Show source in fhconfparser.py:362](../../../fhconfparser/fhconfparser.py#L362)
+[Show source in fhconfparser.py:363](../../../fhconfparser/fhconfparser.py#L363)
 
 Get a value from section.option with some fallback for if it doesn't exist as an str.
 
@@ -200,7 +200,7 @@ def getstr(
 
 ### FHConfParser().hasOption
 
-[Show source in fhconfparser.py:229](../../../fhconfparser/fhconfparser.py#L229)
+[Show source in fhconfparser.py:230](../../../fhconfparser/fhconfparser.py#L230)
 
 Return True if the option present in the data rep (under a given section.
 
@@ -223,7 +223,7 @@ def hasOption(self, section: str | None, option: str) -> bool: ...
 
 ### FHConfParser().hasSection
 
-[Show source in fhconfparser.py:215](../../../fhconfparser/fhconfparser.py#L215)
+[Show source in fhconfparser.py:216](../../../fhconfparser/fhconfparser.py#L216)
 
 Return True if the section present in the data rep.
 
@@ -245,7 +245,7 @@ def hasSection(self, section: str | None) -> bool: ...
 
 ### FHConfParser().options
 
-[Show source in fhconfparser.py:264](../../../fhconfparser/fhconfparser.py#L264)
+[Show source in fhconfparser.py:265](../../../fhconfparser/fhconfparser.py#L265)
 
 Return a list of options available in the specified section.
 
@@ -267,7 +267,7 @@ def options(self, section: str | None) -> list[str]: ...
 
 ### FHConfParser().parseConfigList
 
-[Show source in fhconfparser.py:40](../../../fhconfparser/fhconfparser.py#L40)
+[Show source in fhconfparser.py:41](../../../fhconfparser/fhconfparser.py#L41)
 
 Parse a list of tuples containing paths to config files and the format.
 
@@ -309,7 +309,7 @@ def parseConfigList(
 
 ### FHConfParser().parseIni
 
-[Show source in fhconfparser.py:86](../../../fhconfparser/fhconfparser.py#L86)
+[Show source in fhconfparser.py:87](../../../fhconfparser/fhconfparser.py#L87)
 
 Parse a single ini file and update the internal rep with the new data.
 
@@ -341,7 +341,7 @@ def parseIni(
 
 ### FHConfParser().parseJson
 
-[Show source in fhconfparser.py:177](../../../fhconfparser/fhconfparser.py#L177)
+[Show source in fhconfparser.py:178](../../../fhconfparser/fhconfparser.py#L178)
 
 Parse a single json file and update the internal rep with the new data.
 
@@ -378,7 +378,7 @@ def parseJson(
 
 ### FHConfParser().parseToml
 
-[Show source in fhconfparser.py:139](../../../fhconfparser/fhconfparser.py#L139)
+[Show source in fhconfparser.py:140](../../../fhconfparser/fhconfparser.py#L140)
 
 Parse a single toml file and update the internal rep with the new data.
 
@@ -415,7 +415,7 @@ def parseToml(
 
 ### FHConfParser().sections
 
-[Show source in fhconfparser.py:254](../../../fhconfparser/fhconfparser.py#L254)
+[Show source in fhconfparser.py:255](../../../fhconfparser/fhconfparser.py#L255)
 
 Return a list of the sections available.
 
@@ -433,7 +433,7 @@ def sections(self) -> list[str]: ...
 
 ## _cast
 
-[Show source in fhconfparser.py:405](../../../fhconfparser/fhconfparser.py#L405)
+[Show source in fhconfparser.py:406](../../../fhconfparser/fhconfparser.py#L406)
 
 Handy cast function. Raises a ValueError if fails when strict=True else...
 
@@ -467,7 +467,7 @@ def _cast(payload: Any, castFunc: Callable[[Any], Any], strict: bool = True) -> 
 
 ## _resolveNamespace
 
-[Show source in fhconfparser.py:384](../../../fhconfparser/fhconfparser.py#L384)
+[Show source in fhconfparser.py:385](../../../fhconfparser/fhconfparser.py#L385)
 
 Take some document object and set the root to the namespace.
 

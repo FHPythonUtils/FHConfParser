@@ -10,7 +10,7 @@
 
 ## SimpleConf
 
-[Show source in simpleconf.py:51](../../../fhconfparser/simpleconf.py#L51)
+[Show source in simpleconf.py:52](../../../fhconfparser/simpleconf.py#L52)
 
 SimpleConf works to combine some dictionary of options (likely from argparse)...
 
@@ -69,7 +69,7 @@ class SimpleConf: ...
 
 ### SimpleConf().get
 
-[Show source in simpleconf.py:105](../../../fhconfparser/simpleconf.py#L105)
+[Show source in simpleconf.py:106](../../../fhconfparser/simpleconf.py#L106)
 
 Get an option from the commandline/ the config.
 

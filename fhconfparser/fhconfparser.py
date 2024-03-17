@@ -11,6 +11,7 @@ streamlines that a bit.
 - Toml
 - Json
 """
+
 from __future__ import annotations
 
 import configparser
