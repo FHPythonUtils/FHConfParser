@@ -14,7 +14,7 @@ streamlines that a bit.
 
 from __future__ import annotations
 
-from .fhconfparser import FHConfParser
-from .simpleconf import SimpleConf
+from fhconfparser.fhconfparser import FHConfParser
+from fhconfparser.simpleconf import SimpleConf
 
 _ = (FHConfParser, SimpleConf)

@@ -45,7 +45,7 @@ from typing import Any
 
 import attr
 
-from .fhconfparser import FHConfParser
+from fhconfparser.fhconfparser import FHConfParser
 
 
 @attr.s(auto_attribs=True)
@@ -117,4 +117,4 @@ class SimpleConf:
 
 		"""
 		conf = self.configParser.get(self.section, option, fallback)
-		return self.args[option] if option in self.args else conf
+		return self.args.get(option, conf)
